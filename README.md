@@ -7,7 +7,7 @@ maven工程，数据库采用mysql，不包含HTML前端页面。
 
 
 
-安卓端异常崩溃捕获看过来：[点击前往](https://github.com/yutils/ycrash)
+配套的安卓端异常捕获看过来：[点击前往](https://github.com/yutils/ycrash)
 
 配套的WEB前端页面请看过来：[点击前往](https://github.com/yutils/ycrash-web)
 
