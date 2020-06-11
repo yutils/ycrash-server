@@ -5,7 +5,9 @@
 
 maven工程，数据库采用mysql，不包含HTML前端页面。
 
+因为采用前后端分离，所以启动服务后要查看数据还得启动web前端页面。
 
+**注意：** 在application.properties中配置好数据库后，第一次启动会自动创建表。
 
 **配套的安卓端异常捕获看过来：[点击前往](https://github.com/yutils/ycrash)**
 
