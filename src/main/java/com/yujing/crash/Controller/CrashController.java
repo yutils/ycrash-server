@@ -36,9 +36,9 @@ public class CrashController {
         double free = run.freeMemory() / 1024 / 1024;
         double used = startMem / 1024 / 1024;
         Map<String, Object> objectMap = new HashMap<>();
-        objectMap.put("服务器时间:", simpleDateFormat.format(new Date()));
-        objectMap.put("可用内存:", free + "MB");
-        objectMap.put("已使用内存:", used + "MB");
+        objectMap.put("服务器时间", simpleDateFormat.format(new Date()));
+        objectMap.put("可用内存", free + "MB");
+        objectMap.put("已使用内存", used + "MB");
         //获取session
         User user = (User) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
         if (user == null) {
