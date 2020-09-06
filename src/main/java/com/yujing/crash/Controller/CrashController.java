@@ -38,8 +38,8 @@ public class CrashController {
 
         run.gc();
         long startMem = run.totalMemory() - run.freeMemory();
-        double free = run.freeMemory() / 1024 / 1024;
-        double used = startMem / 1024 / 1024;
+        double free = run.freeMemory() / 1024.0 / 1024.0;
+        double used = startMem / 1024.0 / 1024.0;
         Map<String, Object> objectMap = new HashMap<>();
         objectMap.put("服务器时间", simpleDateFormat.format(new Date()));
         objectMap.put("可用内存", free + "MB");
