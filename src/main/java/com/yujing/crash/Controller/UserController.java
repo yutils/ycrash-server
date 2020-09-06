@@ -20,10 +20,13 @@ import java.util.Date;
 @Controller
 @RequestMapping(value = "/user")
 public class UserController {
-    @Autowired
     UserDao userDao;
-    @Autowired
     LoginDao loginDao;
+    @Autowired
+    public UserController(UserDao userDao, LoginDao loginDao) {
+        this.userDao = userDao;
+        this.loginDao = loginDao;
+    }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody

@@ -22,8 +22,13 @@ import java.util.*;
 @Controller
 @RequestMapping(value = "/")
 public class CrashController {
-    @Autowired
     AppInfoDao appInfoDao;
+
+    @Autowired
+    public CrashController(AppInfoDao appInfoDao) {
+        this.appInfoDao = appInfoDao;
+    }
+
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
 
     @RequestMapping(value = "", method = RequestMethod.GET)

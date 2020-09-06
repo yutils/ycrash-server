@@ -1,6 +1,5 @@
 package com.yujing.crash.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.context.annotation.Bean;
@@ -26,8 +25,7 @@ public class WebConfigurer implements WebMvcConfigurer {
     @Value("${yuJing.file.staticPath}")
     private String fileStaticPath;
     //登录拦截器
-    @Autowired
-    LoginInterceptor loginInterceptor;
+    LoginInterceptor loginInterceptor=new LoginInterceptor();
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {

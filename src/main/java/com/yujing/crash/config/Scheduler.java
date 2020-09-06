@@ -21,8 +21,11 @@ import java.util.Date;
 @Order
 public class Scheduler implements ApplicationRunner {
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy年MM月dd日HH:mm:ss");
-    @Autowired
     UserDao userDao;
+    @Autowired
+    public Scheduler(UserDao userDao) {
+        this.userDao = userDao;
+    }
 
     //只执行一次
     @Override
