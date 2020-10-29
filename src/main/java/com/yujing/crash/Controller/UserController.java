@@ -1,7 +1,7 @@
 package com.yujing.crash.Controller;
 
 
-import com.yujing.crash.Constant.ConstantUtils;
+import com.yujing.crash.Constant.Constants;
 import com.yujing.crash.bean.Login;
 import com.yujing.crash.bean.User;
 import com.yujing.crash.dao.LoginDao;
@@ -50,7 +50,7 @@ public class UserController {
         loginRecord.setName(user.getName());
         loginDao.save(loginRecord);
         //保存session
-        request.getSession().setAttribute(ConstantUtils.USER_SESSION_KEY, user);
+        request.getSession().setAttribute(Constants.USER_SESSION_KEY, user);
         request.getSession().setMaxInactiveInterval(60 * 60 * 24);//秒为单位
         return new Resp(0, "登录成功", user);
     }
@@ -134,14 +134,14 @@ public class UserController {
     @RequestMapping(value = "/getUser")
     @ResponseBody
     public Resp getUser(HttpServletRequest request) {
-        User user = (User) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
+        User user = (User) request.getSession().getAttribute(Constants.USER_SESSION_KEY);
         System.out.println("获取用户信息");
         return new Resp(0, "获取成功", user);
     }
 
     @RequestMapping("/logout")
     public String logout(HttpServletRequest request) {
-        request.getSession().removeAttribute(ConstantUtils.USER_SESSION_KEY);
+        request.getSession().removeAttribute(Constants.USER_SESSION_KEY);
         System.out.println("退出登录");
         return "redirect:/";
     }

@@ -1,7 +1,7 @@
 package com.yujing.crash.Controller;
 
 import com.google.gson.Gson;
-import com.yujing.crash.Constant.ConstantUtils;
+import com.yujing.crash.Constant.Constants;
 import com.yujing.crash.bean.AppInfo;
 import com.yujing.crash.bean.User;
 import com.yujing.crash.dao.AppInfoDao;
@@ -45,7 +45,7 @@ public class CrashController {
         objectMap.put("可用内存", free + "MB");
         objectMap.put("已使用内存", used + "MB");
         //获取session
-        User user = (User) request.getSession().getAttribute(ConstantUtils.USER_SESSION_KEY);
+        User user = (User) request.getSession().getAttribute(Constants.USER_SESSION_KEY);
         if (user == null) {
             return new Resp(403, "当前账号未登录", objectMap);
         }
@@ -64,7 +64,7 @@ public class CrashController {
         AppInfo appInfo = gson.fromJson(appInfos, AppInfo.class);
         appInfo.set提交时间(simpleDateFormat.format(new Date()));
         appInfoDao.save(appInfo);
-        System.out.println(simpleDateFormat.format(new Date()) + "\t收到一条新异常！！！\t软件名称：" + appInfo.get软件名称() + "\t包名：" + appInfo.get包名() + "\t版本名：" + appInfo.get版本名() + "\t版本号：" + appInfo.get软件名称() + "\tIsDebug：" + appInfo.getIsDebug() + "\t设备时间：" + appInfo.get设备时间());
+        System.out.println(simpleDateFormat.format(new Date()) + "\t收到一条新异常！！！\t软件名称：" + appInfo.get软件名称() + "\t包名：" + appInfo.get包名() + "\t版本名：" + appInfo.get版本名() + "\t版本号：" + appInfo.get版本号() + "\tIsDebug：" + appInfo.getIsDebug() + "\t设备时间：" + appInfo.get设备时间());
         //创建查询条件数据对象
         return new Resp(0, "提交成功", "异常提交成功");
     }
