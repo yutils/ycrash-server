@@ -29,11 +29,11 @@ public class UploadController {
     private String contextPath;
 
     //虚拟路径
-    @Value("${yuJing.staticPath}")
-    private String staticPath;
+    @Value("${file.virtualPath}")
+    private String virtualPath;
     //磁盘路径
-    @Value("${yuJing.file.staticPath}")
-    private String fileStaticPath;
+    @Value("${file.physicsPath}")
+    private String physicsPath;
 
     @RequestMapping(value = "/file", method = RequestMethod.POST)
     @ResponseBody
@@ -62,9 +62,9 @@ public class UploadController {
                 //File属性
                 FileInfo fileInfo = new FileInfo();
                 //物理路径:物理路径+新文件名
-                fileInfo.filePath = fileStaticPath + newFileName;
+                fileInfo.filePath = physicsPath + newFileName;
                 //相对路径:虚拟路径+新文件名
-                fileInfo.relativeUrl = "/" + staticPath.replace("*", "") + newFileName;
+                fileInfo.relativeUrl = "/" + virtualPath.replace("*", "") + newFileName;
                 //url:地址+项目名+"/"+虚拟路径+新文件名
                 fileInfo.absoluteUrl = projectUrl + fileInfo.relativeUrl;
                 //保存
@@ -190,9 +190,9 @@ public class UploadController {
             //File属性
             FileInfo fileInfo = new FileInfo();
             //物理路径:物理路径+新文件名
-            fileInfo.filePath = fileStaticPath + newFileName;
+            fileInfo.filePath = physicsPath + newFileName;
             //相对路径:虚拟路径+新文件名
-            fileInfo.relativeUrl = "/" + staticPath.replace("*", "") + newFileName;
+            fileInfo.relativeUrl = "/" + virtualPath.replace("*", "") + newFileName;
             //url:地址/项目名+虚拟路径+新文件名
             fileInfo.absoluteUrl = projectUrl + fileInfo.relativeUrl;
             // 转存文件

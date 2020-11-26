@@ -19,11 +19,11 @@ import java.io.File;
 @Configuration
 public class WebConfigurer implements WebMvcConfigurer {
     //虚拟路径
-    @Value("${yuJing.staticPath}")
-    private String staticPath;
+    @Value("${file.virtualPath}")
+    private String virtualPath;
     //磁盘路径
-    @Value("${yuJing.file.staticPath}")
-    private String fileStaticPath;
+    @Value("${file.physicsPath}")
+    private String physicsPath;
     //登录拦截器
     LoginInterceptor loginInterceptor=new LoginInterceptor();
 
@@ -38,14 +38,14 @@ public class WebConfigurer implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         //请求拦截器
-        registry.addResourceHandler(staticPath).addResourceLocations("file:" + fileStaticPath);
+        registry.addResourceHandler(virtualPath).addResourceLocations("file:" + physicsPath);
     }
 
     //临时存储路径
     @Bean
     MultipartConfigElement multipartConfigElement() {
         MultipartConfigFactory factory = new MultipartConfigFactory();
-        String location = fileStaticPath + File.separator + "temp";
+        String location = physicsPath + File.separator + "temp";
         File tmpFile = new File(location);
         if (!tmpFile.exists()) {
             tmpFile.mkdirs();
